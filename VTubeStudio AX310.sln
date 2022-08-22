@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VTubeStudio AX310", "VTubeStudio AX310\VTubeStudio AX310.csproj", "{7D398F7B-35BF-4F3F-BDED-9EA9227E7397}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF} = {04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7F4F323-6878-4664-BE64-DF2C639F78A1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VTubeStudioAPI", "VTubeStudioAPI\VTubeStudioAPI.csproj", "{AC01A077-F821-4CE8-8193-F7C7761660E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF} = {04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin", "Utils\Plugin.csproj", "{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actions", "Actions\Actions.csproj", "{B8411F7C-836C-447B-98DD-E9151C294299}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D398F7B-35BF-4F3F-BDED-9EA9227E7397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D398F7B-35BF-4F3F-BDED-9EA9227E7397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D398F7B-35BF-4F3F-BDED-9EA9227E7397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D398F7B-35BF-4F3F-BDED-9EA9227E7397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC01A077-F821-4CE8-8193-F7C7761660E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC01A077-F821-4CE8-8193-F7C7761660E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC01A077-F821-4CE8-8193-F7C7761660E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC01A077-F821-4CE8-8193-F7C7761660E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B75F1A-EF0B-4E52-A4FF-C2877D505FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8411F7C-836C-447B-98DD-E9151C294299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8411F7C-836C-447B-98DD-E9151C294299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8411F7C-836C-447B-98DD-E9151C294299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8411F7C-836C-447B-98DD-E9151C294299}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D581EA6D-34D7-4651-9C97-E5D6BD7C6ACA}
+	EndGlobalSection
+EndGlobal
