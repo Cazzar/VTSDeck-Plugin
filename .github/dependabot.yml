@@ -5,19 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "NuGet"
+  - package-ecosystem: "nuget"
     directory: "/Actions"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "NuGet"
+  - package-ecosystem: "nuget"
     directory: "/Utils"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "NuGet"
+  - package-ecosystem: "nuget"
     directory: "/VTubeStudio AX310"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "NuGet"
+  - package-ecosystem: "nuget"
     directory: "/VTubeStudioAPI"
     schedule:
       interval: "weekly"
