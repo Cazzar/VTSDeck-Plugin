@@ -5,7 +5,23 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "NuGet"
+    directory: "/Actions"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+  - package-ecosystem: "NuGet"
+    directory: "/Utils"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "NuGet"
+    directory: "/VTubeStudio AX310"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "NuGet"
+    directory: "/VTubeStudioAPI"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/property-inspector-ax310"
+    schedule:
+      interval: "weekly"
