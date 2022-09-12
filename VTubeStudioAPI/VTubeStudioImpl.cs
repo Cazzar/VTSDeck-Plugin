@@ -59,6 +59,12 @@ internal class VTubeStudioImpl : IVTubeStudio
     private void Connect()
     {
         Logger.LogDebug("Connect called");
+        if (!AuthManager.AllowConnect)
+        {
+            Logger.LogDebug("Connection stopped by setting");
+            return;
+        }
+
         Authed = false;
         if (Settings.Host == null || Settings.Port == null)
             return;
@@ -159,7 +165,12 @@ internal class VTubeStudioImpl : IVTubeStudio
 
             case ApiResponse<AuthenticationResponse> m:
                 Authed = m.Data?.Authenticated ?? false;
-                if (!Authed) AuthManager.Token = null;
+                if (!Authed)
+                {
+                    AuthManager.Token = null;
+                    Send(new AuthenticateRequest());
+                }
+                
 
                 VTSEvents.TriggerOnAuthenticationResponse(this, new(m.Data, m.RequestId));
                 break;

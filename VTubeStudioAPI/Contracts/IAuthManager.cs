@@ -8,5 +8,6 @@ namespace VTubeStudioAPI.Contracts;
 
 public interface IAuthManager
 {
+    public bool AllowConnect { get; set; }
     public string? Token { get; set; }
 }

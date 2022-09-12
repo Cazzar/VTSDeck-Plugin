@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace AverMediaVTubeStudio.Requests;
 internal class SendToPropertyView : ISendToPropertyView
 {
+    [JsonProperty("event")] public string Event { get => "sendToPropertyView"; }
     [JsonProperty("payload")] public object? Payload { get; set; }
     [JsonProperty("context")] public string ContextId { get; set; }
 }

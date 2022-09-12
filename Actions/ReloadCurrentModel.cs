@@ -51,6 +51,6 @@ public class ReloadCurrentModel : BaseAction<ReloadCurrentModel.PluginSettings>,
 
     public void Dispose()
     {
-        VTubeStudioWebsocketClient.OnCurrentModelInformation -= OnCurrentModelInfo;
+        VTSEvents.OnCurrentModelInformation -= OnCurrentModelInfo;
     }
 }

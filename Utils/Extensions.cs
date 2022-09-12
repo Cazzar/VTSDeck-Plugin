@@ -14,6 +14,7 @@ public static class Extensions
     public static IServiceCollection AddActionRepository(this IServiceCollection services)
     {
         services.AddSingleton<IActionRepository, ActionRepository>();
+        services.AddHostedService<ActionTimer>();
         return services;
     }
 

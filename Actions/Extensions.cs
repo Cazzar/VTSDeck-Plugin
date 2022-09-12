@@ -12,6 +12,8 @@ public static class Extensions
     public static IServiceCollection AddActions(this IServiceCollection services)
     {
         services.AddSingleton<ModelCache>();
+        services.AddSingleton<HotkeyCache>();
+
 
         return services;
     }

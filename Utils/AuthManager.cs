@@ -22,6 +22,7 @@ public class AuthManager : IAuthManager, IGlobalSettingsHandler, IVTubeStudioSet
 
     public string Host { get => Settings.Host; set => Settings.Host = value; }
     public ushort? Port { get => Settings.Port; set => Settings.Port = value; }
+    public bool AllowConnect { get; set; } = false;
 
     public AuthManager(Lazy<IConnection> connection, IRequestFactory requestFactory)
     {
@@ -29,7 +30,11 @@ public class AuthManager : IAuthManager, IGlobalSettingsHandler, IVTubeStudioSet
         this.requestFactory = requestFactory;
     }
 
-    public void GotGlobalSettings(IGlobalSettings settings) => Settings = settings.GetSettings<GlobalSettings>()!;
+    public void GotGlobalSettings(IGlobalSettings settings)
+    {
+        Settings = settings.GetSettings<GlobalSettings>()!;
+        AllowConnect = true;
+    }
 
     private void SaveSettings() => connection.Value.SendMessage(requestFactory.CreateRequest<ISaveGlobalSettings>(s => s.Settings = Settings));
 

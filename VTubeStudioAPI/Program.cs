@@ -28,6 +28,16 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
+#if DEBUG
+        //args = File.ReadAllLines(@"C:\Users\me\AppData\Roaming\AVerMedia Creator Central\packages\dev.cazzar.vtubestudio\argv.txt");
+#elif FALSE
+        File.WriteAllLines(@"C:\Users\me\AppData\Roaming\AVerMedia Creator Central\packages\dev.cazzar.vtubestudio\argv.txt", args);
+        while (true)
+        {
+            Thread.Sleep(100);
+        }
+        return;
+#endif
         var hostBuilder = CreateHostBuilder(args);
         await hostBuilder.Build().RunAsync();
     }

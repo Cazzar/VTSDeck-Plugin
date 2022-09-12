@@ -70,7 +70,7 @@ public class TriggerHotkeyAction : BaseAction<TriggerHotkeyAction.PluginSettings
         UpdateTitle();
     }
 
-    public override void Refresh(ISendToPlugin pl)
+    public override void Refresh(PluginPayload pl)
     {
         _modelCache.Update();
         base.Refresh(pl);

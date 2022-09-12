@@ -30,7 +30,7 @@ public class Hotkey
             HotkeyAction.ChangeVTSModel => File.TrimEnd(".vtube.json"),
             HotkeyAction.TakeScreenshot => "Take Screenshot",
             HotkeyAction.ScreenColorOverlay => "Screen Color Overlay",
-            HotkeyAction.RemoveAllItems => "Remove All Items",
+            //HotkeyAction.RemoveAllItems => "Remove All Items",
             _ => "Unknown",
         };
 }

@@ -60,15 +60,15 @@ public abstract class BaseAction<T> : Plugin.Actions.BaseAction<T>, IPropertyIns
     }
 
     [PluginCommand("refresh")]
-    public virtual async void Refresh(ISendToPlugin pl) => await UpdateClient();
+    public virtual async void Refresh(PluginPayload pl) => await UpdateClient();
 
     [PluginCommand("force-reconnect")]
-    public void ForceReconnect(ISendToPlugin pl) => Vts.Reconnect();
+    public void ForceReconnect(PluginPayload pl) => Vts.Reconnect();
 
     [PluginCommand("set-vtsinfo")]
-    public void SetVtsInfo(ISendToPlugin pl)
+    public void SetVtsInfo(PluginPayload pl)
     {
-        var (host, port) = pl.GetPayload<(string host, ushort port)>();
+        var (host, port) = ((string)(pl.Payload?["host"] ?? "127.0.0.1"), (ushort)(pl.Payload?["port"] ?? 8001));
 
         Vts.SetConnectionParams(host, port);
     }

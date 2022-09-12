@@ -1,0 +1,111 @@
+{
+    "Author": "Cazzar",
+    "Description": "Trigger and control VTubeStudio!",
+    "Name": "VTubeStudio",
+    "UUID": "dev.cazzar.vtubestudio",
+    "Icon": "vts_logo_transparent.png",
+    "URL": "https://cazzar.dev/",
+    "Version": "1.0.0",
+    "Runtime": {
+        "mac": {
+            "type": "bin",
+            "target": "vts-creatorcentral",
+            "MinimumVersion": "11.0"
+        },
+        "win": {
+            "type": "bin",
+            "target": "vts-creatorcentral.exe",
+            "MinimumVersion": "11.0"
+        }
+    },
+    "CreatorCentral": {
+        "MinimumVersion": "1.1",
+        "SDKVersion": 2
+    },
+    "Widgets": [
+        {
+            "Name": "Change Model",
+            "Icon": "vts_logo_transparent.png",
+            "Tooltip": "Change Model",
+            "UUID": "dev.cazzar.vtubestudio.changemodel",
+            "PropertyViewPath": "PropertyInspector/ModelChange.html",
+            "States": [
+                {
+                    "Image": "vts_logo_transparent.png",
+                    "Title": "Change Model"
+                }
+            ],
+            "Layouts": [
+                {
+                    "Title": "Change Model",
+                    "Icon": "vts_logo_transparent.png",
+                    "Width": 1,
+                    "Height": 1
+                }
+            ]
+        },
+        {
+            "Name": "Trigger Hotkey",
+            "Icon": "vts_logo_transparent.png",
+            "Tooltip": "Trigger Hotkey",
+            "UUID": "dev.cazzar.vtubestudio.triggerhotkey",
+            "PropertyViewPath": "PropertyInspector/TriggerHotkey.html",
+            "States": [
+                {
+                    "Image": "vts_logo_transparent.png",
+                    "Title": "Trigger Hotkey"
+                }
+            ],
+            "Layouts": [
+                {
+                    "Title": "Trigger Hotkey",
+                    "Icon": "vts_logo_transparent.png",
+                    "Width": 1,
+                    "Height": 1
+                }
+            ]
+        },
+        {
+            "Name": "Move Model",
+            "Icon": "vts_logo_transparent.png",
+            "Tooltip": "Move Model",
+            "UUID": "dev.cazzar.vtubestudio.movemodel",
+            "PropertyViewPath": "PropertyInspector/MoveModel.html",
+            "States": [
+                {
+                    "Image": "vts_logo_transparent.png",
+                    "Title": "Move Model"
+                }
+            ],
+            "Layouts": [
+                {
+                    "Title": "Move Model",
+                    "Icon": "vts_logo_transparent.png",
+                    "Width": 1,
+                    "Height": 1
+                }
+            ]
+        },
+        {
+            "Name": "Scale Model",
+            "Icon": "vts_logo_transparent.png",
+            "Tooltip": "Scale Model",
+            "UUID": "dev.cazzar.vtubestudio.scalemodel",
+            "PropertyViewPath": "PropertyInspector/ScaleModel.html",
+            "States": [
+                {
+                    "Image": "vts_logo_transparent.png",
+                    "Title": "Scale Model"
+                }
+            ],
+            "Layouts": [
+                {
+                    "Title": "Scale Model",
+                    "Icon": "vts_logo_transparent.png",
+                    "Width": 1,
+                    "Height": 1
+                }
+            ]
+        }
+    ]
+}
