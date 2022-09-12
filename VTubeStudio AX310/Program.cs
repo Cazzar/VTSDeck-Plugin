@@ -73,8 +73,7 @@ public class Program
 
                     services.AddLogging(logging =>
                     {
-                        logging.AddConsole();
-                        logging.AddDebug();
+                        logging.ClearProviders();
                         logging.SetMinimumLevel(LogLevel.Trace);
                         logging.AddNLog();
                     });
