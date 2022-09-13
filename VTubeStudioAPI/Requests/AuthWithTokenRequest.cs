@@ -1,23 +1,25 @@
 ﻿using VTubeStudioAPI.Responses;
 using Newtonsoft.Json;
+using VTubeStudioAPI.Contracts;
 
 namespace VTubeStudioAPI.Requests;
 
 [AuthLess]
-public class AuthWithTokenRequest : ApiRequest
+public class AuthWithTokenRequest : IApiRequest
 {
     [JsonProperty("pluginName")] 
-    public string Name { get; } = "StreamDeck Integration";
+    public string Name { get; }
     [JsonProperty("pluginDeveloper")] 
-    public string Developer { get; } = "Cazzar";
+    public string Developer { get; }
 
     [JsonProperty("authenticationToken")]
     public string Token { get; set; }
 
-    public AuthWithTokenRequest(string token)
+    public AuthWithTokenRequest(IPluginInformation info)
     {
-        this.Token = token;
+        Name = info.Name;
+        Developer = info.Developer;
     }
-    
-    public override RequestType MessageType { get; } = RequestType.AuthenticationRequest;
+
+    public RequestType MessageType { get; } = RequestType.AuthenticationRequest;
 }

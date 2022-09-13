@@ -3,7 +3,7 @@
 namespace VTubeStudioAPI.Requests;
 
 [AuthLess]
-public class ApiStateRequest : ApiRequest
+public class ApiStateRequest : IApiRequest
 {
-    public override RequestType MessageType { get; } = RequestType.APIStateRequest;
+    public RequestType MessageType { get; } = RequestType.APIStateRequest;
 }

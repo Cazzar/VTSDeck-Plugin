@@ -1,6 +1,7 @@
 ﻿using Plugin.Contracts;
 using Plugin.Contracts.Requests;
 using VTubeStudioAPI.Contracts;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
 
 namespace Plugin;
 

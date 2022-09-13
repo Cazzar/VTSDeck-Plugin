@@ -4,7 +4,7 @@ using VTubeStudioAPI.Responses;
 
 namespace VTubeStudioAPI.Requests;
 
-public abstract class ApiRequest
+public interface IApiRequest
 {
     [JsonIgnore]
     public abstract RequestType MessageType { get; }

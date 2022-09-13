@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace VTubeStudioAPI.Requests;
 
-public class ModelLoadRequest : ApiRequest
+public class ModelLoadRequest : IApiRequest
 {
     [JsonProperty("modelID")]
     public string Id { get; set; }
@@ -19,5 +19,5 @@ public class ModelLoadRequest : ApiRequest
         this.Id = id;
     }
 
-    public override RequestType MessageType { get; } = RequestType.ModelLoadRequest;
+    public RequestType MessageType { get; } = RequestType.ModelLoadRequest;
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace VTubeStudioAPI.Requests;
 
-public class HotkeyTriggerRequest : ApiRequest
+public class HotkeyTriggerRequest : IApiRequest
 {
     [JsonProperty("hotkeyID")]
     public string Id { get; set; }
@@ -19,5 +19,5 @@ public class HotkeyTriggerRequest : ApiRequest
         
     }
 
-    public override RequestType MessageType { get; } = RequestType.HotkeyTriggerRequest;
+    public RequestType MessageType { get; } = RequestType.HotkeyTriggerRequest;
 }

@@ -2,7 +2,7 @@
 
 namespace VTubeStudioAPI.Requests;
 
-public class CurrentModelRequest : ApiRequest
+public class CurrentModelRequest : IApiRequest
 {
-    public override RequestType MessageType { get; } = RequestType.CurrentModelRequest;
+    public RequestType MessageType { get; } = RequestType.CurrentModelRequest;
 }

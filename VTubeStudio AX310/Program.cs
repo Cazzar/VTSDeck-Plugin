@@ -21,6 +21,10 @@ using VTubeStudioAPI.Responses;
 using Actions;
 using Actions.Caches;
 using NLog.Extensions.Logging;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
+using RequestFactory = Plugin.RequestFactory;
+
+
 
 namespace AverMediaVTubeStudio;
 
@@ -66,6 +70,7 @@ public class Program
 
                     services.AddHostedService<CreatorCentralHostedService>();
                     services.Configure<RegistrationOptions>(ctx.Configuration.GetSection(Extensions.Prefix));
+                    services.AddSingleton<IPluginInformation, VTubeStudioPluginInformation>();
 
                     services.AddActionRepository();
                     services.AddLazySupport();

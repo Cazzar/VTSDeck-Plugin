@@ -5,6 +5,7 @@ using Plugin.Contracts.Actions;
 using Plugin.Contracts.Requests;
 using System.Reflection;
 using VTubeStudioAPI.Contracts;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
 
 namespace Actions;
 
@@ -13,7 +14,7 @@ public abstract class BaseAction<T> : Plugin.Actions.BaseAction<T>, IPropertyIns
     protected IVTubeStudio Vts;
     private readonly Dictionary<string, MethodInfo> _commands = new();
     protected readonly IGlobalSettingsHandler Gsm;
-    private readonly ILogger _logger;
+    protected readonly ILogger _logger;
 
     public BaseAction(IGlobalSettingsHandler gsm, IVTubeStudio vts, IConnection isd, ILogger logger, IRequestFactory requestFactory) : base(isd, requestFactory)
     {

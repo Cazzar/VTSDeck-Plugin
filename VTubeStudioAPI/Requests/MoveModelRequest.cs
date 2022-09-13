@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace VTubeStudioAPI.Requests;
 
 [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-public class MoveModelRequest : ApiRequest
+public class MoveModelRequest : IApiRequest
 {
     [JsonProperty("timeInSeconds", NullValueHandling = NullValueHandling.Include)] public double? TimeInSeconds { get; set; }
     [JsonProperty("valuesAreRelativeToModel")] public bool? RelativeMove { get; set; }
@@ -13,5 +13,5 @@ public class MoveModelRequest : ApiRequest
     [JsonProperty("rotation")] public double? Rotation { get; set; }
     [JsonProperty("size")] public double? Size { get; set; }
     
-    public override RequestType MessageType { get; } = RequestType.MoveModelRequest;
+    public RequestType MessageType { get; } = RequestType.MoveModelRequest;
 }

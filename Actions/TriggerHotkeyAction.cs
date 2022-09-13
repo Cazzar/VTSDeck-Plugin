@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VTubeStudioAPI.Contracts;
 using VTubeStudioAPI.Requests;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
 
 namespace Actions;
 
@@ -59,7 +60,14 @@ public class TriggerHotkeyAction : BaseAction<TriggerHotkeyAction.PluginSettings
             hotkeys = keys?.Select(s => new VTubeReference { Id = s.Id, Name = $"{s.Name} - ({s.ButtonTitle})", }).ToList() ?? new();
         }
 
-        return new { Models = models, Hotkeys = hotkeys, Connected = Vts.IsAuthed };
+        return new ClientData { Models = models, Hotkeys = hotkeys, Connected = Vts.IsAuthed };
+    }
+
+    class ClientData
+    {
+        [JsonProperty("models")] public List<VTubeReference> Models;
+        [JsonProperty("hotkeys")] public List<VTubeReference> Hotkeys;
+        [JsonProperty("connected")] public bool Connected;
     }
 
     protected override void SettingsUpdated(PluginSettings oldSettings, PluginSettings newSettings)

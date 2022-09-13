@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using VTubeStudioAPI;
 using VTubeStudioAPI.Contracts;
 using VTubeStudioAPI.Requests;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
 
 namespace Actions;
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata.Ecma335;
 using VTubeStudioAPI.Contracts;
+using VTubeStudioAPI.Requests;
 
 namespace VTubeStudioAPI;
 public static class VTubeStudioExtensions
@@ -15,6 +17,7 @@ public static class VTubeStudioExtensions
         services.AddSingleton<IVTubeStudio, VTubeStudioImpl>();
         services.AddSingleton(typeof(IAuthManager), typeof(T));
         services.AddSingleton(typeof(IVTubeStudioSettings), typeof(U));
+        services.AddScoped<IRequestFactory, RequestFactory>();
 
         return services;
     }
@@ -28,6 +31,9 @@ public static class VTubeStudioExtensions
         services.AddSingleton<IVTubeStudio, VTubeStudioImpl>();
         services.AddSingleton(getAuthManager);
         services.AddSingleton(getSettings);
+        services.AddScoped<IRequestFactory, RequestFactory>();
+        services.AddTransient<AuthenticateRequest>();
+        services.AddTransient<AuthWithTokenRequest>();
 
         return services;
     }

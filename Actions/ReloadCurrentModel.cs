@@ -11,6 +11,7 @@ using VTubeStudioAPI;
 using VTubeStudioAPI.Contracts;
 using VTubeStudioAPI.Requests;
 using VTubeStudioAPI.Responses;
+using IRequestFactory = Plugin.Contracts.Requests.IRequestFactory;
 
 namespace Actions;
 [CustomAction("dev.cazzar.vtubestudio.reloadmodel")]

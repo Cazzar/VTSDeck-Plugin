@@ -7,7 +7,7 @@ public interface IVTubeStudio
     bool Authed { get; }
     bool IsAuthed { get; }
 
-    public void Send(ApiRequest request, string? requestId = null);
+    public void Send(IApiRequest request, string? requestId = null);
     public void SetConnectionParams(string host, ushort port);
     public void EnsureConnected();
     public void Reconnect();

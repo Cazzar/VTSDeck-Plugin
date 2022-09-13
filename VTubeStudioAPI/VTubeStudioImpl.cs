@@ -12,6 +12,7 @@ internal class VTubeStudioImpl : IVTubeStudio
     private ILogger<VTubeStudioImpl> Logger { get; }
     public IAuthManager AuthManager { get; }
     public IVTubeStudioSettings Settings { get; }
+    public IRequestFactory RequestFactory { get; }
     private WebSocket? WebSocket { get; set; }
     public bool IsAuthed => Authed && (WebSocket?.IsAlive ?? false);
     public bool Authed { get; private set; } = false;
@@ -23,12 +24,14 @@ internal class VTubeStudioImpl : IVTubeStudio
     public VTubeStudioImpl(
         ILogger<VTubeStudioImpl> logger,
         IAuthManager authManager,
-        IVTubeStudioSettings settings
+        IVTubeStudioSettings settings,
+        IRequestFactory requestFactory
     )
     {
         Logger = logger;
         AuthManager = authManager;
         Settings = settings;
+        RequestFactory = requestFactory;
     }
 
     public async void Run()
@@ -69,6 +72,18 @@ internal class VTubeStudioImpl : IVTubeStudio
         if (Settings.Host == null || Settings.Port == null)
             return;
 
+        if (WebSocket is not null)
+        {
+            try
+            {
+                WebSocket.Close();
+            }
+            catch
+            {
+                //ignore
+            }
+        }
+
         var uri = new UriBuilder() { Host = Settings.Host, Port = Settings.Port.Value, Scheme = "ws" }.Uri;
         Logger.LogInformation("Connecting to {Uri}", uri);
         WebSocket = new(uri.ToString());
@@ -83,9 +98,9 @@ internal class VTubeStudioImpl : IVTubeStudio
         WebSocket.OnOpen += (sender, args) =>
         {
             if (!string.IsNullOrEmpty(AuthManager.Token))
-                Send(new AuthWithTokenRequest(AuthManager.Token));
+                Send(RequestFactory.CreateRequest<AuthWithTokenRequest>(c => c.Token = AuthManager.Token));
             else
-                Send(new AuthenticateRequest());
+                Send(RequestFactory.CreateRequest<AuthenticateRequest>());
             VTSEvents.TriggerSocketConnected(this);
         };
 
@@ -119,8 +134,9 @@ internal class VTubeStudioImpl : IVTubeStudio
         }
     }
 
-    public void Send(ApiRequest request, string? requestId = null)
+    public void Send(IApiRequest? request, string? requestId = null)
     {
+        if (request == null) return;
         if (WebSocket is null) return;
 
         var data = JsonConvert.SerializeObject(new RequestWrapper(request) { RequestId = requestId });
@@ -160,7 +176,8 @@ internal class VTubeStudioImpl : IVTubeStudio
             
             case ApiResponse<AuthenticateResponse> m:
                 AuthManager.Token = m.Data!.AuthToken;
-                Send(new AuthWithTokenRequest(m.Data!.AuthToken));
+                //new AuthWithTokenRequest(m.Data!.AuthToken)
+                Send(RequestFactory.CreateRequest<AuthWithTokenRequest>(c => c.Token = m.Data!.AuthToken));
                 break;
 
             case ApiResponse<AuthenticationResponse> m:
@@ -168,9 +185,8 @@ internal class VTubeStudioImpl : IVTubeStudio
                 if (!Authed)
                 {
                     AuthManager.Token = null;
-                    Send(new AuthenticateRequest());
+                    Send(RequestFactory.CreateRequest<AuthenticateRequest>());
                 }
-                
 
                 VTSEvents.TriggerOnAuthenticationResponse(this, new(m.Data, m.RequestId));
                 break;
