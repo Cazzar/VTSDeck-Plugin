@@ -67,6 +67,7 @@ public class Program
                     services.AddTransient<ISaveGlobalSettings, SetPackageSettings>();
                     services.AddTransient<ISendToPropertyView, SendToPropertyView>();
                     services.AddTransient<IRequestGlobalSettings, RequestPackageSettings>();
+                    services.AddTransient<ISetTitle, ChangeWidgetTitle>();
 
                     services.AddHostedService<CreatorCentralHostedService>();
                     services.Configure<RegistrationOptions>(ctx.Configuration.GetSection(Extensions.Prefix));
