@@ -4,6 +4,6 @@ namespace AverMediaVTubeStudio.CreatorCentral.Messages;
 
 internal class DidReceiveWidgetTitle : ContextMessage
 {
-    public JObject Payload { get; set; }
+    public JToken Payload { get; set; }
 }
 
